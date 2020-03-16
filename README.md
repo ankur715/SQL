@@ -1,4 +1,4 @@
 # SQL
 ---
-MySQL 
-PostgreSQL
+- MySQL   
+- PostgreSQL
