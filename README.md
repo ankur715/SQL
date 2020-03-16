@@ -1,4 +1,8 @@
 # SQL
 ---
+Relational Database Management System:  
 - MySQL   
-- PostgreSQL
+- PostgreSQL  
+
+Database:
+- ZAGI Retail Company Sales Department Database
