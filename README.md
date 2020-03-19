@@ -8,7 +8,7 @@
 
 - [PostgreSQL](https://github.com/ankur715/SQL/tree/master/postgresql)  
 <p align="left">
-  <img width="1000" height="450" src="https://github.com/ankur715/SQL/blob/master/postgresql/create%20table.JPG"> 
+  <img width="1000" height="450" src="https://github.com/ankur715/SQL/blob/master/postgresql/select.JPG"> 
 </p>
 
 Database:
