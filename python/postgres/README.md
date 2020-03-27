@@ -6,5 +6,5 @@
 ---
 
 <p align="center">
-  <img width="400" height="200" src="https://github.com/ankur715/SQL/blob/master/python/postgres/database%20ini.JPG"> 
+  <img width="350" height="200" src="https://github.com/ankur715/SQL/blob/master/python/postgres/database%20ini.JPG"> 
 </p>
