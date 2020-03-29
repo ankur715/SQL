@@ -3,7 +3,7 @@
 </p>
 
 ---
-### Inserted using Python
+#### Inserted using Python
 <p align="center">
   <img width="1000" height="500" src="https://github.com/ankur715/SQL/blob/master/python/postgres/user_accounts.JPG"> 
 </p>
