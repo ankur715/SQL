@@ -1,8 +1,7 @@
 # SQL
 ---
 ### Relational Database Management Systems:   
-Database:
-- ZAGI Retail Company Sales Department Database
+##### ZAGI Retail Company Sales Department Database
 
 - [MySQL](https://github.com/ankur715/SQL/tree/master/mysql)   
 <p align="left">
