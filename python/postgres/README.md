@@ -5,7 +5,7 @@
 ---
 #### Inserted using Python
 <p align="left">
-  <img width="600" height="200" src="https://github.com/ankur715/SQL/blob/master/python/postgres/psycopg2.JPG"> 
+  <img width="600" height="150" src="https://github.com/ankur715/SQL/blob/master/python/postgres/psycopg2.JPG"> 
 </p>
 
 <p align="left">
