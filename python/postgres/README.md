@@ -5,6 +5,10 @@
 ---
 #### Inserted using Python
 <p align="center">
+  <img width="1000" height="500" src="https://github.com/ankur715/SQL/blob/master/python/postgres/psycopg2.JPG"> 
+</p>
+
+<p align="center">
   <img width="1000" height="500" src="https://github.com/ankur715/SQL/blob/master/python/postgres/user_accounts.JPG"> 
 </p>
 
