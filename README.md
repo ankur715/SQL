@@ -8,7 +8,7 @@
   <img width="1000" height="450" src="https://github.com/ankur715/SQL/blob/master/mysql/create%20database.JPG"> 
 </p>
 
-- [MySQL Query](https://github.com/ankur715/SQL/tree/master/data_management_%26_big_data)
+- [MySQL - Query](https://github.com/ankur715/SQL/tree/master/data_management_%26_big_data)
 
 - [PostgreSQL](https://github.com/ankur715/SQL/tree/master/postgresql)  
 <p align="left">
