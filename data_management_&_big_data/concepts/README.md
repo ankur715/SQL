@@ -19,5 +19,5 @@
   
 
 <p align="left">
-  <img width=800" height="500" src="https://github.com/ankur715/SQL/blob/master/data_management_%26_big_data/concepts/snowflake%20schema.JPG"
+  <img width=800" height="600" src="https://github.com/ankur715/SQL/blob/master/data_management_%26_big_data/concepts/snowflake%20schema.JPG"
 </p>
