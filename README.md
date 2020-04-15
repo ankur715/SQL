@@ -20,7 +20,7 @@
   <img width="600" height="150" src="https://github.com/ankur715/SQL/blob/master/python/postgres/psycopg2.JPG"> 
 </p>
 
-<br/><br/>
+- [Python - PSQL](https://github.com/ankur715/SQL/tree/master/python/postgres_tweets)
 <p>
   <img src="https://github.com/ankur715/SQL/blob/master/python/postgres_tweets/psql%20copy.JPG"> 
 </p>
