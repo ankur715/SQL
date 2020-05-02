@@ -1,1 +1,1 @@
-<p><img src="https://w0.pngwave.com/png/498/812/microsoft-sql-server-computer-servers-database-server-table-png-clip-art.png"></p>
+<p><img src="https://lh3.googleusercontent.com/proxy/kSlw-CRaNnZvrTyCVhPw2dMsu6wdlZbPY4-fLQ1awrIpIQ8o_7GCE5gewfU2FxAeM6UOTDPwDCCngip_LNStM4Xq1j1L9L9mjh3no1mw79qc2DUAdo9HHv9nfbyu"></p>
