@@ -28,11 +28,11 @@
   <img src="https://github.com/ankur715/SQL/blob/master/python/postgres_tweets/psql%20copy.JPG"> 
 </p>
 
-\<p>
+<p>
   <img src="https://github.com/ankur715/SQL/blob/master/python/postgres_tweets/query.JPG"> 
 </p>
 
-<br/><br/>
+- [Oracle](https://github.com/ankur715/SQL/blob/master/oracle)
 
 <p><img src="https://github.com/ankur715/SQL/blob/master/oracle/images/oracle_create_database.JPG"></p>
 
