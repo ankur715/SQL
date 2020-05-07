@@ -1,4 +1,4 @@
-<p align="center"><img width="50" src="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/07/microsoft-sql-server595x3350_0.jpg?itok=1dsuI4TA"></p>
+<p align="center"><img width="500" src="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/uploads/2017/07/microsoft-sql-server595x3350_0.jpg?itok=1dsuI4TA"></p>
 
 ---
 
