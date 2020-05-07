@@ -1,7 +1,6 @@
 # SQL
 ---
-### Relational Database Management Systems:   
-##### ZAGI Retail Company Sales Department Database
+## Relational Database Management Systems:   
 
 - [Microsoft SQL Server](https://github.com/ankur715/SQL/blob/master/mssql/students)   
 <p><img src="https://github.com/ankur715/SQL/blob/master/mssql/students/images/query.JPG"></p>
