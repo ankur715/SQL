@@ -3,7 +3,8 @@
 ## Relational Database Management Systems:   
 
 - [Microsoft SQL Server](https://github.com/ankur715/SQL/blob/master/mssql)   
-<p><img src="https://github.com/ankur715/SQL/blob/master/mssql/students/images/query.JPG"></p>
+<p><img src="https://github.com/ankur715/SQL/blob/master/mssql/giraffe/company_query.png"></p>
+
 
 - [MySQL](https://github.com/ankur715/SQL/tree/master/mysql)   
 <p align="left">
