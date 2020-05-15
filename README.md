@@ -37,3 +37,8 @@
 <p><img src="https://github.com/ankur715/SQL/blob/master/oracle/images/oracle_create_database.JPG"></p>
 
 <p><img src="https://github.com/ankur715/SQL/blob/master/oracle/images/query.JPG"></p>
+
+- [Azure SQL Server](https://github.com/ankur715/SQL/tree/master/azure)
+
+<p><img src="https://github.com/ankur715/SQL/blob/master/azure/sql_server_azure.JPG"></p>
+
