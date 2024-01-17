@@ -1,0 +1,1201 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/16/2024 3:58:24 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-6MEU5T5"
+  DTS:CreatorName="DESKTOP-6MEU5T5\ankur"
+  DTS:DTSID="{4A10E12A-BD3E-4BD7-BEF5-DBF9EBAC6944}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Transformation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{8EAD4431-3940-40E5-BCC4-8A5231DB4554}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6MEU5T5\ANKUR715.SSIS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{867EB5B6-9A73-41D6-A38E-AABB6685BF10}"
+      DTS:ObjectName="DESKTOP-6MEU5T5\ANKUR715.SSIS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-6MEU5T5\ANKUR715;Initial Catalog=SSIS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-6MEU5T5\ANKUR715.Test]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DEEE9E21-8221-4BCC-BBA1-679A54520930}"
+      DTS:ObjectName="DESKTOP-6MEU5T5\ANKUR715.Test">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-6MEU5T5\ANKUR715;Initial Catalog=Test;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9DBBB6A7-2437-4E5D-B354-3C37A0DD242A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[Area Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Area Code"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Area Code]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Conv Area Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Conv Area Code]"
+                      name="Conv Area Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Area Code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SSISDB_Target"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SSISDB_Target"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ChurnT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\SSISDB_Target.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6MEU5T5\ANKUR715.SSIS]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6MEU5T5\ANKUR715.SSIS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Account Length]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Account Length"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Account Length]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Account Length]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Day Mins]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Day Mins"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Day Mins]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Mins]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Day Calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Day Calls"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Day Calls]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Calls]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Day Charge]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Day Charge"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Day Charge]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Charge]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Night Mins]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Night Mins"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Night Mins]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Mins]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Night Calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Night Calls"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Night Calls]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Calls]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Night Charge]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Night Charge"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Night Charge]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Charge]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Intl Mins]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Intl Mins"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Intl Mins]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Mins]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Intl Calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Intl Calls"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Intl Calls]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Calls]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Intl Charge]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Intl Charge"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Intl Charge]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Charge]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[CustServ Calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CustServ Calls"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[CustServ Calls]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[CustServ Calls]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Churn?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Churn?"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Churn?]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Churn?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Eve Mins]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Eve Mins"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Evening Mins]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Mins]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Eve Calls]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Eve Calls"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Evening Calls]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Calls]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Eve Charge]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Eve Charge"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Evening Charge]"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Charge]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].Columns[Conv Area Code]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Conv Area Code"
+                      externalMetadataColumnId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Area Code]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Conv Area Code]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Account Length]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Account Length" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Area Code]"
+                      dataType="wstr"
+                      length="50"
+                      name="Area Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Int'l Plan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Int'l Plan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[VMail Plan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VMail Plan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[VMail Message]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VMail Message" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Day Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Day Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Day Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Day Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Day Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Day Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Evening Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Evening Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Evening Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Evening Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Evening Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Evening Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Night Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Night Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Night Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Night Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Night Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Night Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Intl Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Intl Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Intl Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Intl Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Intl Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Intl Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[CustServ Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustServ Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input].ExternalColumns[Churn?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Churn?" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\SSISDB_Target.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SSISDB_Target.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSISDB_Target.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SSISDB_Target.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\TestDB_ChurnT"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="TestDB_ChurnT"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ChurnT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\TestDB_ChurnT.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-6MEU5T5\ANKUR715.Test]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-6MEU5T5\ANKUR715.Test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Account Length]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Account Length]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Account Length]"
+                      name="Account Length"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Area Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Area Code]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Area Code]"
+                      name="Area Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Day Mins]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Mins]"
+                      name="Day Mins"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Day Calls]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Calls]"
+                      name="Day Calls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Day Charge]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Day Charge]"
+                      name="Day Charge"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Eve Mins]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Mins]"
+                      name="Eve Mins"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Eve Calls]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Calls]"
+                      name="Eve Calls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Eve Charge]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Eve Charge]"
+                      name="Eve Charge"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Night Mins]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Mins]"
+                      name="Night Mins"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Night Calls]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Calls]"
+                      name="Night Calls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Night Charge]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Night Charge]"
+                      name="Night Charge"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Intl Mins]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Mins]"
+                      name="Intl Mins"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Intl Calls]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Calls]"
+                      name="Intl Calls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Intl Charge]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Intl Charge]"
+                      name="Intl Charge"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[CustServ Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[CustServ Calls]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[CustServ Calls]"
+                      name="CustServ Calls"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Churn?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Churn?]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].Columns[Churn?]"
+                      name="Churn?"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Account Length]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Account Length" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Area Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Area Code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Int'l Plan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Int'l Plan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[VMail Plan]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VMail Plan" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[VMail Message]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="VMail Message" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Day Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Day Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Day Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Day Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Day Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Day Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Eve Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Eve Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Eve Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Eve Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Eve Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Eve Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Night Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Night Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Night Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Night Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Night Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Night Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Intl Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Intl Mins" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Intl Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Intl Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Intl Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Intl Charge" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[CustServ Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustServ Calls" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output].ExternalColumns[Churn?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Churn?" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Account Length]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Account Length]"
+                      name="Account Length" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Area Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Area Code]"
+                      name="Area Code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Day Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Day Mins]"
+                      name="Day Mins" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Day Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Day Calls]"
+                      name="Day Calls" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Day Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Day Charge]"
+                      name="Day Charge" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Eve Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Eve Mins]"
+                      name="Eve Mins" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Eve Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Eve Calls]"
+                      name="Eve Calls" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Eve Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Eve Charge]"
+                      name="Eve Charge" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Night Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Night Mins]"
+                      name="Night Mins" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Night Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Night Calls]"
+                      name="Night Calls" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Night Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Night Charge]"
+                      name="Night Charge" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Intl Mins]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Intl Mins]"
+                      name="Intl Mins" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Intl Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Intl Calls]"
+                      name="Intl Calls" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Intl Charge]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Intl Charge]"
+                      name="Intl Charge" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[CustServ Calls]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[CustServ Calls]"
+                      name="CustServ Calls" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Churn?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[Churn?]"
+                      name="Churn?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\SSISDB_Target.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\TestDB_ChurnT.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D2CCBB30-4142-495E-9321-07019BEB36CF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{867EB5B6-9A73-41D6-A38E-AABB6685BF10}"
+          SQLTask:SqlStatementSource="DELETE FROM ChurnT" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{840A19B7-9ECF-4D09-8C0A-9E23BC6AB685}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="335,185" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="329,88" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="410.5,130">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55"
+              Start="0,0"
+              End="0,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Data Flow Task\TestDB_ChurnT"
+          TopLeft="574,133" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\SSISDB_Target"
+          TopLeft="570,335" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="575,228" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="651.75,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="649.25,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\TestDB_ChurnT">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\SSISDB_Target">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
