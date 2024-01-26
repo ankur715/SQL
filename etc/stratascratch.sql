@@ -1,3 +1,99 @@
+/*
+Duplicate rows
+*/
+use test;
+select * from amazon;
+select customer_no, item, count(*)
+from amazon
+group by customer_no, item
+having count(*) > 1;
+
+/*
+Declare, Set, query JSON
+*/
+DECLARE @json NVARCHAR(MAX);
+SET @json='{"name":"John","surname":"Doe","age":45,"skills":["SQL","C#","MVC"]}';
+SELECT * FROM OPENJSON(@json);
+
+DECLARE @json NVARCHAR(MAX)
+SET @json =   
+  N'[  
+       {  
+         "Order": {  
+           "Number":"SO43659",  
+           "Date":"2011-05-31T00:00:00"  
+         },  
+         "AccountNumber":"AW29825",  
+         "Item": {  
+           "Price":2024.9940,  
+           "Quantity":1  
+         }  
+       },  
+       {  
+         "Order": {  
+           "Number":"SO43661",  
+           "Date":"2011-06-01T00:00:00"  
+         },  
+         "AccountNumber":"AW73565",  
+         "Item": {  
+           "Price":2024.9940,  
+           "Quantity":3  
+         }  
+      }  
+ ]'  
+SELECT * FROM  
+ OPENJSON ( @json )  
+WITH (   
+              Number   varchar(200) '$.Order.Number' ,  
+              Date     datetime     '$.Order.Date',  
+              Customer varchar(200) '$.AccountNumber',  
+              Quantity int          '$.Item.Quantity'  
+ );
+
+-- Snowflake 
+-- Query in Snowflake with Json data
+select jsonrecord:customer from JSONRECORD;
+select get_path(jsonrecord, 'address') from JSONRECORD;
+select get_path(jsonrecord, 'orders') from JSONRECORD;
+select jsonrecord['address']['city'] from JSONRECORD 
+    where jsonrecord:customer = 'Maria';
+select jsonrecord['orders'][0]['quantity'] from JSONRECORD;
+select jsonrecord['orders'][0] from JSONRECORD 
+    where jsonrecord:customer = 'Maria';
+select jsonrecord:customer, jsonrecord:orders  from JSONRECORD;
+select jsonrecord:customer, jsonrecord:age, jsonrecord:orders  from JSONRECORD ,
+   lateral flatten(input => jsonrecord:orders) prod ;
+
+
+/*
+Latest sale date for customer
+*/
+select * from amazon;
+with customer_last_purchase as (
+	select customer_no, max(order_date) as last_purchase
+	from amazon
+	group by customer_no
+)
+select c.customer_no, a.item, last_purchase
+from amazon a
+right join customer_last_purchase c on a.customer_no=c.customer_no and a.order_date=c.last_purchase
+order by c.customer_no;
+/*
+2nd most expensive order (union 1st if only 1 or same price)
+*/
+select * from sales.order_items;
+select order_id, list_price
+from (select order_id, list_price, dense_rank() over (partition by order_id order by list_price desc) as dr
+	  from sales.order_items) ranked_orders
+where dr = 2
+union
+select order_id, max(list_price)
+from sales.order_items
+group by order_id
+having count(*) = 1 
+order by order_id;
+
+
 --------------------------------------------------------------------------------------------------------
 -- https://platform.stratascratch.com/coding?code_type=5&is_freemium=1
 --------------------------------------------------------------------------------------------------------
@@ -12,6 +108,45 @@ Sort the result based on profits in descending order.
 select top 3 company, profits
 from forbes_global_2010_2014
 order by profits desc;
+
+
+/*
+Duplicate rows
+*/
+use test;
+select * from amazon;
+select customer_no, item, count(*)
+from amazon
+group by customer_no, item
+having count(*) > 1;
+
+/*
+Latest sale date for customer
+*/
+select * from amazon;
+with customer_last_purchase as (
+	select customer_no, max(order_date) as last_purchase
+	from amazon
+	group by customer_no
+)
+select c.customer_no, a.item, last_purchase
+from amazon a
+right join customer_last_purchase c on a.customer_no=c.customer_no and a.order_date=c.last_purchase
+order by c.customer_no;
+/*
+2nd most expensive order (union 1st if only 1 or same price)
+*/
+select * from sales.order_items;
+select order_id, list_price
+from (select order_id, list_price, dense_rank() over (partition by order_id order by list_price desc) as dr
+	  from sales.order_items) ranked_orders
+where dr = 2
+union
+select order_id, max(list_price)
+from sales.order_items
+group by order_id
+having count(*) = 1 
+order by order_id;
 
 
 /*
@@ -734,8 +869,17 @@ begin
 end
 execute spCreateNewFarmer @first_name = 'Ankur', @last_name='Patel';
 
+alter table farmer alter column first_name varchar(30);
+select * from Test.dbo.amazon
+CREATE TRIGGER update_trig 
+ON Test.dbo.amazon
+AFTER UPDATE --insert
+AS RAISERROR ('Notify update',1,1);
+UPDATE Test.dbo.amazon SET item = 'm' WHERE customer_no=2;
+
 /*
-DDL data definition language
+Data Definition Language(DDL) 
+create a database, define the structure, use it, and discard it when its work is done
 */
 CREATE DATABASE/TABLE/VIEW;
 CREATE INDEX index_name ON table_name (column1, column2, ...);
@@ -749,12 +893,16 @@ ALTER TABLE Persons ADD CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
 ALTER TABLE table_name RENAME COLUMN old_name TO new_name;  -- mysql
 ALTER TABLE table_name MODIFY COLUMN column_name datatype;
 /*
-DML data manipulation language
+Data Manipulation Language(DML) 
+enter data, modify data, extracting data
 */
 DELETE FROM table_name WHERE condition;
 UPDATE table name SET <attribute> = <expression> WHERE <condition>;
 /*
-DCL/TCL data/transaction control language
+Data Control Language(DCL)
+protect our database against corruption and misuse
+Transaction Control Language(TCL) 
+save transaction, rollback
 */
 GRANT select, update ON TestTable TO user1, user2;  
 REVOKE select, update ON TestTable TO user1, user2;  
@@ -774,8 +922,6 @@ can export database
 */
 COPY table_name (column1, column2, ...) FROM 'data_file' WITH (FORMAT csv);
 COPY persons(first_name,last_name,email) TO 'C:\tmp\persons_partial_db.csv' DELIMITER ',' CSV HEADER;
-
-
 
 
 
